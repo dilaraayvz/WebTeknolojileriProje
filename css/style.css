@@ -1,0 +1,54 @@
+.resimSlider{
+    height: 500px;
+}
+body{
+    padding-top:50px; 
+    font-family: 'Raleway', sans-serif; 
+}
+.hakkimda{
+    background-color: #f2f2f2;
+}
+.ayrac{
+    border:none;
+    border-top: 3px solid #2d2931;
+    max-width: 300px;
+    margin: 25px auto;
+}
+.siteSonu{
+    text-align: right;
+    color: rgb(156, 156, 156);
+}
+.iletisim{
+    background:url("../img/arkaplan.jpg");
+    background-size: cover;
+    padding: 50px;
+    padding-bottom:0;
+    text-align: center;
+}
+.iletisimopak{
+    height:100%px;
+    width: 100%;
+    background:rgba(255,255,255,0.3);
+    border-radius: 2%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+.formgroup{
+    width: 700px;
+    float: left;
+    height: 500px;
+    text-emphasis: left;
+}
+.imgkisi{
+    width: 15%;
+    height: 15%;
+}
+.card-img-top{
+    height: 300px;
+}
+.hakkimda{
+    background:url("../img/arkaplan.jpg");
+}
+
+
