@@ -1,12 +1,9 @@
 .resimSlider{
-    height: 500px;
+    height: 600px;
 }
 body{
     padding-top:50px; 
     font-family: 'Raleway', sans-serif; 
-}
-.hakkimda{
-    background-color: #f2f2f2;
 }
 .ayrac{
     border:none;
@@ -19,13 +16,14 @@ body{
     color: rgb(156, 156, 156);
 }
 .iletisim{
-    background:url("../img/arkaplan.jpg");
+    background:url("../img/arkaplan.jpeg");
     background-size: cover;
     padding: 50px;
     padding-bottom:0;
     text-align: center;
 }
-.iletisimopak{
+.opak{
+    
     height:100%px;
     width: 100%;
     background:rgba(255,255,255,0.3);
@@ -48,7 +46,55 @@ body{
     height: 300px;
 }
 .hakkimda{
-    background:url("../img/arkaplan.jpg");
+    background-size: auto;
+    background:url("../img/arkaplan.jpeg");
 }
-
+.sehrim{
+    background: url("../img/arkaplan.jpeg");
+}
+p{ text-indent:50px;}
+.takimimiz{
+    background:url("../img/arkaplan.jpeg");
+    background-size: cover;
+    padding: 60px;
+    padding-bottom:0;padding-top: 0;
+}
+.header-image {
+    margin-bottom: 0;
+    border-bottom: 1px solid #eaeaea;
+    width: 100%;
+}
+.saga-kaydir{
+float:right;
+padding:0 0 10px 10px;
+}
+ 
+.sola-kaydir{
+float:left;
+padding:0 10px 10px 0;
+}
+.loginform{
+    width: 40%;
+    margin: auto;
+}
+.opaklogin{
+    height:100%px;
+    width:50%;
+    background:rgba(255,255,255,0.3);
+    border-radius: 2%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    margin: auto;
+}
+.ben{
+    width: 10%;
+}
+.ozgecmis{
+    background-size: auto;
+    background:url("../img/arkaplan.jpeg");
+}
+td{
+    text-align: left;
+}
 

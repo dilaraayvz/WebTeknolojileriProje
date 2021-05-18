@@ -39,7 +39,7 @@
           <a class="nav-link" href="sehrim.html">Şehrim</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mirasimiz.html">Mirasımız</a>
+          <a class="nav-link" href="takimimiz.html">Takımımız</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ilgi-alanlarim.html">İlgi Alanlarım</a>
@@ -57,24 +57,23 @@
 <!-- Navbar bitiş -->
 
  <!-- İletişim başlangıç-->
-  <section class="p-5 iletisim mb-0" >
+  <section class="p-5 iletisim mb-0 align-middle " >
     <div class="container ">
-      <h2 class="mb-5 font-weight-bold iletisimbaslik"> İletişim</h2>
-      <div class="iletisimopak">
+      <div class="opak">
+        <h2 class="mb-5 font-weight-bold iletisimbaslik"> İletişim</h2>
         <div class="formgroup"> 
-          <form action="" class=" text-left margin-auto">
+          <form action="" name="formIletisim" class=" text-left margin-auto" onsubmit="return kontrol()">
           <div class="form-group-row">
-             <input type="text"  id="isim" name="isim" required placeholder="İsim Soyisim"> 
-             <input type="text" list="universiteler" placeholder="Okul seçiniz">
-             <datalist id="universiteler"> <option value="SAÜ">
-             Sakarya Üniveristesi</option>
-             <option value="SUBÜ"> Sakarya Uyg. Bil. Üniversitesi </option>
-             <option value="KOÜ">  Kocaeli Üniversitesi </option>
-              <option value="İTÜ"> İstanbul Teknik Üniversitesi </option>
-             </datalist>
+             <input type="text"  id="isim" name="isim" placeholder="Ad Soyad"> 
+            <input type="text" name="tel" placeholder="Telefon numarası" class="form-kontrol">
+          </select>
           </div>
           <div class="form-group-row">
-            <input type="text" name="tel" placeholder="Telefon numarası" required class="form-kontrol">
+            <select name="okul" id="okul" >
+              <option value="sau">Sakarya Üniversitesi</option> 
+              <option value="subu"  >Sakarya Uygulamalı Bilimler </option>
+              <option value="kou">Kocaeli Üniversitesi</option>
+            </select>
             <select name="derece" id="derece" >
               <option value="lisans">Lisans</option> 
               <option value="ylisans"  >Yüksek Lisans</option>
@@ -82,8 +81,7 @@
           </select>
           </div>
           <div class="form-group-row">
-            <input type="date" id="tarih" name="tarih" class="form-kontrol">
-            <input type="email" name="mail" placeholder="E-mail" required class="form-kontrol">
+            <input type="text" name="mail" placeholder="E-mail"  class="form-kontrol">
           </div>
           <div class="form-group-row">
             Kadın <input type="radio" name="cinsiyet" value="kadin" checked class="form-kontrol">
@@ -113,26 +111,25 @@
         <p>Email : dilara.yavuz@ogr.sakarya.edu.tr</p>
       </div>
     </div>
-    
   </div>
+  <br>
+</section>
      <!-- Footer başlangıç-->
-<br>
- <div class="bg-dark text-light text-center mb-0">
-  <p class="align-middle p-5 mb-0 " >
-    <span>Tüm hakları saklıdır. &copy; | 2021</span><br>
-    <span>Designed by <b>Dilara</b> </span>
+     <div class="bg-dark text-light text-center mb-0">
+      <p class="align-middle p-5 mb-0 " >
+        <span>Tüm hakları saklıdır. &copy; | 2021</span><br>
+        <span><b>Dilara YAVUZ</b> </span>
+      </p>
+      <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+      <a target="_blank" href="https://www.instagram.com/?hl=tr"><i class="fab fa-instagram-square"></i></a>
+      <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter-square"></i></a><br>
+      <a href="#"><i class="fas fa-arrow-up"></i></a>
     
-  </p>
-  <a target="_blank" href="https://twitter.com/"><i class="fab fa-facebook-square"></i></a>
-  <a target="_blank" href="https://www.instagram.com/?hl=tr"><i class="fab fa-instagram-square"></i></a>
-  <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-twitter-square"></i></a><br>
-  <a href="#"><i class="fas fa-arrow-up"></i></a>
-
-</div>
+    </div>
 <!-- Footer bitiş-->
   
 
-</section>
+
 <!-- İletişim bitiş-->
      
       
@@ -153,65 +150,33 @@
 
   
 <!-- use strict: herangi bir probmelde hemen hata verir, sıkı mod-->
-<script>
-  "use strict";
-    var formIletisim = document.forms["iletisimFormu"];  // form seçimi
-    var isim=formIletisim.isim.value;
-    var email = formIletisim.emai.valuel;   // eposta alanı seçimi
-    var atpos=formIletisim.email.indexOf("@");
-    var dotpos=formIletisim.email.lastIndexOf(".");
-    var soyisim=formIletisim.soyisim.value;
-    var tarih=formIletisim.tarih.value;
-    var cinsiyet=formIletisim.cinsiyet.value;
-    var derece=formIletisim.derece.value;
-    var universiteler=formIletisim.universiteler.value;
-    var mesaj=formIletisim.mesaj.value;
+<script type="text/javascript">
 
-    formIletisim.onsubmit = function() {
-     
-      if (isim==null) {
+    var form = document.forms["formIletisim"];  // form seçimi
+    var ad=form.isim;
+    var telefon=form.tel;
+    var email=form.mail;
+    var mesaj=form.mesaj;
+   // var cinsiyet=document.forms["form"]["cinsiyet"]
+    function kontrol(){
+      if (ad.value=="") {
     alert("İsim boş bırakılamaz!");
     return false;
   }
-  if (soyisim==null) {
-    alert("Soyisim boş bırakılamaz!");
+  if (telefon.value=="") {
+    alert("Telefon numarası boş bırakılamaz!");
     return false;
   }
-   /*
-  if (tarih==null) {
-    alert("Tarih boş bırakılamaz!");
-    return false;
-  }
-  if (tarih==null) {
-    alert("Tarih boş bırakılamaz!");
-  return false;
-  }
-  if (cinsiyet==null) {
-    alert("Cinsiyet boş bırakılamaz!");
-    return false;
-  }
-  if (derece==null) {
-    alert("Derece boş bırakılamaz!");
-    return false;
-  }
-    if (soyisim==null) {
-    alert("Soyisim boş bırakılamaz!");
-    return false;
-  }
-  if (universiteler==null) {
-    alert("Universite boş bırakılamaz!");
-    return false;
-  }
-  if (mesaj==null) {
+  if ( email.value.indexOf("@")<1 || email.value.lastIndexOf(".")<email.value.indexOf("@")+2 || email.value.lastIndexOf(".")+2>=email.value.length )
+    {
+        alert("Geçerli email adresi girin");
+        return false;
+    }    
+  if (mesaj.value=="") {
     alert("Mesaj boş bırakılamaz!");
     return false;
   }
-  
-  if ( atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length ) {
-        alert("Geçerli email adresi girin");
-        return false;
-   }     
-   */ 
+   
     return true;
     }
 
