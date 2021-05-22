@@ -17,7 +17,7 @@
  <!-- font awesome -->
  
 <link href="css/style.css" rel="stylesheet"> <!--load all styles -->
-    <title >İLETİŞİM</title>
+    <title >İletişim</title>
   </head>
   <body>
 <!-- Navbar başlangıç-->
@@ -45,7 +45,7 @@
           <a class="nav-link" href="ilgi-alanlarim.html">İlgi Alanlarım</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="iletisim.html">İletişim</a>
+          <a class="nav-link" href="iletisim.php">İletişim</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="giris-yap.html">Giriş Yap</a>
@@ -62,7 +62,7 @@
       <div class="opak">
         <h2 class="mb-5 font-weight-bold iletisimbaslik"> İletişim</h2>
         <div class="formgroup"> 
-          <form action="" name="formIletisim" class=" text-left margin-auto" onsubmit="return kontrol()">
+          <form action="iletisim.php" method="POST" name="formIletisim" class=" text-left margin-auto" onsubmit="return kontrol()">
           <div class="form-group-row">
              <input type="text"  id="isim" name="isim" placeholder="Ad Soyad"> 
             <input type="text" name="tel" placeholder="Telefon numarası" class="form-kontrol">
@@ -88,9 +88,6 @@
             Erkek <input type="radio" name="cinsiyet" value="erkek" class="form-kontrol"> 
             Diğer <input type="radio" name="cinsiyet" value="diger" class="form-kontrol">
           </div>
-          <div class="form-group-row">
-            <input type="file" name="dosya" multiple class="form-kontrol">
-          </div>
           <div class="form-grpup-row">
             <textarea name="mesaj" class="form-kontrol" placeholder="Mesaj giriniz." cols="45" rows="5"></textarea>
           </div>
@@ -103,8 +100,8 @@
       
       <div class="adres">
         <h4>Adres : </h4>
-        <p>Mehmet Akif Ersoy Mahallesi</p>
-        <p>Akyıldız Caddesi</p>
+        <p>Bayramoğlu Mahallesi</p>
+        <p>Ahmet Rasim Caddesi</p>
         <p>Oğuz Bey Sokak</p>
         <p>No : 123</p>
         <p>0555 555 5555</p>
@@ -169,7 +166,7 @@
   }
   if ( email.value.indexOf("@")<1 || email.value.lastIndexOf(".")<email.value.indexOf("@")+2 || email.value.lastIndexOf(".")+2>=email.value.length )
     {
-        alert("Geçerli email adresi girin");
+        alert("Geçerli email adresi giriniz!");
         return false;
     }    
   if (mesaj.value=="") {
@@ -185,3 +182,29 @@
   </script>
   </body>
 </html>
+
+<?php
+  include("baglanti.php");
+  if(isset($_POST["isim"], $_POST["tel"], $_POST["mail"], $_POST["okul"], $_POST["derece"], $_POST["cinsiyet"], $_POST["mesaj"])){
+    $adsoyad=$_POST["isim"];
+    $telefon= $_POST["tel"];
+    $email=$_POST["mail"];
+    $okul=$_POST["okul"];
+    $derece=$_POST["derece"];
+    $cinsiyet=$_POST["cinsiyet"];
+    $mesaj=$_POST["mesaj"];
+
+    $ekle="INSERT INTO  iletisim (adsoyad, telefon, email, okul, derece, cinsiyet, mesaj)
+     VALUES
+    ('".$adsoyad."','".$telefon."','".$email."','".$okul."','".$derece."','".$cinsiyet."','".$mesaj."')";
+    
+    if($baglan->query($ekle)===TRUE)
+    {
+        echo"<script>alert('Mesajınız başarı ile gönderildi.')</script>";
+    }
+    else
+    {
+      echo"Bir hata oluştu! Mesajınız gönderilemedi.";
+    }
+  }
+?>

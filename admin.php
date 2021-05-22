@@ -7,8 +7,7 @@ if($_SESSION["login"]==false){
 }
 else{
     echo("Giriş başarılı. <br>");
-    echo("Anasayfaya yönlendiriliyorsunuz.");
-    header("Refresh: 2; url=index.html");
+    header("Refresh: 2; url=panel.php");
 }
 ob_end_flush();
 ?>

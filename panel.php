@@ -16,10 +16,11 @@
  <!-- font awesome -->
  <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
  <!-- font awesome -->
-
-    <title>İlgi Alanlarım</title>
+<title>Panel</title>
   </head>
   <body>
+      
+
 <!-- Navbar başlangıç-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
@@ -55,29 +56,52 @@
   </div>
 </nav>
 <!-- Navbar bitiş-->
-<!-- İlgi Alanlarım Başlangıç-->
-<section class="p-5 text-left sehrim"> <!-- p-5 : padding özelliği-->
-  <div class="container opak">
-    
- </div>
-</section>    
-<!-- İlgi Alanlarım Başlangıç-->
 
-<!-- Footer başlangıç-->
 
-<div class="bg-dark text-light text-center mb-0">
-  <p class="align-middle p-5 mb-0 " >
-    <span>Tüm hakları saklıdır. &copy; | 2021</span><br>
-    <span>Designed by <b>Dilara</b> </span>
-  </p>
-  <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
-  <a target="_blank" href="https://www.instagram.com/?hl=tr"><i class="fab fa-instagram-square"></i></a>
-  <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter-square"></i></a><br>
-  <a href="#"><i class="fas fa-arrow-up"></i></a>
+<section class="p-5 mb-0" >
+  <div class="container ">
+        <table id="customers">
+           <thead>
+              <tr>
+                <th scope="col">Ad Soyad</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">Okul</th>
+                <th scope="col">Derece</th>
+                <th scope="col">Cinsiyet</th>
+                <th scope="col">Mesaj</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+include("baglanti.php");
+$sec="Select * From iletisim";
+$sonuc=$baglan->query($sec);
 
-</div>
-<!-- Footer bitiş--> 
-
+if($sonuc->num_rows>0){
+  while($cek=$sonuc->fetch_assoc()){
+      echo"
+      <tr>
+        <td>".$cek['adsoyad']."</td>
+        <td>".$cek['telefon']."</td>
+        <td>".$cek['email']."</td>
+        <td>".$cek['okul']."</td>
+        <td>".$cek['derece']."</td>
+        <td>".$cek['cinsiyet']."</td>
+        <td>".$cek['mesaj']."</td>
+        </tr>
+      ";
+  }
+}
+else{
+  echo"Veritabanında hiç veri bulunamadı.";
+}
+?>
+             
+            </tbody>
+          </table>
+  </div>
+ </section>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -91,3 +115,4 @@
     -->
   </body>
 </html>
+
