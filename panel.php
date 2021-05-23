@@ -24,7 +24,7 @@
 <!-- Navbar başlangıç-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">ERZURUM</a>
+    <a class="navbar-brand" href="index.html">ERZURUM</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -73,29 +73,40 @@
               </tr>
             </thead>
             <tbody>
+              
             <?php
-include("baglanti.php");
-$sec="Select * From iletisim";
-$sonuc=$baglan->query($sec);
+              session_start();
+           if($_SESSION["user"]==""){
+              echo"<script>window.location.href='cikis.php'</script>";
+           }
+           else{
+           echo"Hoşgeldiniz  ".$_SESSION['user']."<br>";
+           echo"<a href='cikis.php'>Çıkış Yap</a><br><br><br><br>";
+            include("baglanti.php");
+            $sec="Select * From iletisim";
+            $sonuc=$baglan->query($sec);
+            
+            if($sonuc->num_rows>0){
+              while($cek=$sonuc->fetch_assoc()){
+                  echo"
+                  <tr>
+                    <td>".$cek['adsoyad']."</td>
+                    <td>".$cek['telefon']."</td>
+                    <td>".$cek['email']."</td>
+                    <td>".$cek['okul']."</td>
+                    <td>".$cek['derece']."</td>
+                    <td>".$cek['cinsiyet']."</td>
+                    <td>".$cek['mesaj']."</td>
+                    </tr>
+                  ";
+              }
+            }
+            else{
+              echo"Veritabanında hiç veri bulunamadı.";
+            }
+           }
+              
 
-if($sonuc->num_rows>0){
-  while($cek=$sonuc->fetch_assoc()){
-      echo"
-      <tr>
-        <td>".$cek['adsoyad']."</td>
-        <td>".$cek['telefon']."</td>
-        <td>".$cek['email']."</td>
-        <td>".$cek['okul']."</td>
-        <td>".$cek['derece']."</td>
-        <td>".$cek['cinsiyet']."</td>
-        <td>".$cek['mesaj']."</td>
-        </tr>
-      ";
-  }
-}
-else{
-  echo"Veritabanında hiç veri bulunamadı.";
-}
 ?>
              
             </tbody>

@@ -1,20 +1,13 @@
 <?php
-include("kullanicilar.php");
 session_start();
-ob_start();
-
-if(($_POST["email"]==$user) and ($_POST["sifre"]==$pass)){
-    $_SESSION["login"] = "true";
-    $_SESSION["user"] = $user;
-    $_SESSION["pass"] = $pass;
-    
-    header("Location:admin.php");
-    
-    }
-    else{
-    echo ("Kullancı Adı veya Şifre Yanlış.<br>");
-    echo ("Giriş sayfasına yönlendiriliyorsunuz.");
+if(isset($_POST["email"], $_POST["sifre"])){
+  if($_POST["email"]=="g191210022@ogr.sakarya.edu.tr" && $_POST["sifre"]=="g191210022"){
+    $_SESSION["user"]=$_POST["email"];
+    header("location:panel.php");
+  }
+  else{
+    echo"<script>alert('Kullanıcı adı veya şifre yanlış girildi.')</script>";
     header("Refresh: 2; url=giris-yap.html");
-    }
-    ob_end_flush();
+  }
+}
 ?>
